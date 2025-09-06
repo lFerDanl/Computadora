@@ -28,12 +28,12 @@ public class Objeto
     {
         partes.Add(parte);
     }
+    //obtener partes con dictionary
 
     public virtual void Render()
     {
         foreach (var parte in partes)
         {
-            // Pasar el centro de masa del objeto a cada parte
             parte.Render(this.centroMasa);
         }
     }

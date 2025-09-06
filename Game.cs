@@ -32,11 +32,10 @@ public class Game : GameWindow
     {
         base.OnLoad(e);
 
-        // Configuraciones GL que no cambian
         GL.ClearColor(0.2f, 0.3f, 0.4f, 1.0f);
         GL.Enable(EnableCap.DepthTest);
 
-        // Configurar matriz de proyección (solo una vez)
+        // Configurar matriz de proyección 
         GL.MatrixMode(MatrixMode.Projection);
         GL.LoadIdentity();
         Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f),
@@ -58,9 +57,10 @@ public class Game : GameWindow
 
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-        // Solo configurar la matriz de vista (cambia con la cámara)
+        // Configurar la matriz de vista (cambia con la cámara)
         GL.MatrixMode(MatrixMode.Modelview);
         GL.LoadIdentity();
+        //--------------------------
         Vector3 cameraTarget = cameraPosition + cameraFront;
         Matrix4 lookAt = Matrix4.LookAt(cameraPosition, cameraTarget, cameraUp);
         GL.LoadMatrix(ref lookAt);
