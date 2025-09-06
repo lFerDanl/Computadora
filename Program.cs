@@ -1,5 +1,6 @@
 ﻿// Program.cs - Actualizado para usar la nueva estructura
 using System;
+using System.Threading;
 using Computadora;
 using OpenTK;
 using OpenTK.Graphics;
@@ -12,6 +13,14 @@ namespace Computadora
     {
         static void Main(string[] args)
         {
+            /*
+            var monitor = ObjetoFactory.CrearMonitor();
+            var mouse = ObjetoFactory.CrearMouse();
+            var teclado = ObjetoFactory.CrearTeclado();
+            var pc = ObjetoFactory.CrearPC();
+            List<Objeto> escritorio = new List<Objeto> { monitor, mouse, teclado, pc };
+            Serializador.GuardarEscena(escritorio, "mi_escritorio");*/
+
             // Configurar y ejecutar el juego
             using (Game game = new Game(1024, 768, "Computadora 3D - OpenTK"))
             {
