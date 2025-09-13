@@ -1,4 +1,4 @@
-﻿// ObjetoFactory.cs - Fábrica de objetos actualizada para serialización
+﻿// ObjetoFactory.cs - Actualizado para nueva estructura de clases
 using System;
 using OpenTK;
 
@@ -43,12 +43,12 @@ public static class ObjetoFactory
         caraDerechaSoporte.AddVertice(new Vertice(0.1f, 0.1f, 0.1f));
         caraDerechaSoporte.AddVertice(new Vertice(0.1f, -1.9f, 0.1f));
 
-        soporteVertical.AddCara(caraFrontalSoporte);
-        soporteVertical.AddCara(caraTraseraSoporte);
-        soporteVertical.AddCara(caraIzquierdaSoporte);
-        soporteVertical.AddCara(caraDerechaSoporte);
+        soporteVertical.AddCara("caraFrontal", caraFrontalSoporte);
+        soporteVertical.AddCara("caraTrasera", caraTraseraSoporte);
+        soporteVertical.AddCara("caraIzquierda", caraIzquierdaSoporte);
+        soporteVertical.AddCara("caraDerecha", caraDerechaSoporte);
 
-        monitor.AddParte(soporteVertical);
+        monitor.AddParte("soporteVertical", soporteVertical);
 
         // Parte: Base del monitor (GRIS OSCURO)
         Parte baseMonitor = new Parte();
@@ -101,14 +101,14 @@ public static class ObjetoFactory
         caraInferiorBase.AddVertice(new Vertice(0.8f, -2.3f, 0.8f));
         caraInferiorBase.AddVertice(new Vertice(-0.8f, -2.3f, 0.8f));
 
-        baseMonitor.AddCara(caraFrontalBase);
-        baseMonitor.AddCara(caraTraseraBase);
-        baseMonitor.AddCara(caraIzquierdaBase);
-        baseMonitor.AddCara(caraDerechaBase);
-        baseMonitor.AddCara(caraSuperiorBase);
-        baseMonitor.AddCara(caraInferiorBase);
+        baseMonitor.AddCara("caraFrontal", caraFrontalBase);
+        baseMonitor.AddCara("caraTrasera", caraTraseraBase);
+        baseMonitor.AddCara("caraIzquierda", caraIzquierdaBase);
+        baseMonitor.AddCara("caraDerecha", caraDerechaBase);
+        baseMonitor.AddCara("caraSuperior", caraSuperiorBase);
+        baseMonitor.AddCara("caraInferior", caraInferiorBase);
 
-        monitor.AddParte(baseMonitor);
+        monitor.AddParte("baseMonitor", baseMonitor);
 
         // Parte: Monitor caja (NEGRO)
         Parte monitorCaja = new Parte();
@@ -161,14 +161,14 @@ public static class ObjetoFactory
         caraInferiorMonitor.AddVertice(new Vertice(2.0f, -0.5f, 0.2f));
         caraInferiorMonitor.AddVertice(new Vertice(-2.0f, -0.5f, 0.2f));
 
-        monitorCaja.AddCara(caraFrontalMonitor);
-        monitorCaja.AddCara(caraTraseraMonitor);
-        monitorCaja.AddCara(caraIzquierdaMonitor);
-        monitorCaja.AddCara(caraDerechaMonitor);
-        monitorCaja.AddCara(caraSuperiorMonitor);
-        monitorCaja.AddCara(caraInferiorMonitor);
+        monitorCaja.AddCara("caraFrontal", caraFrontalMonitor);
+        monitorCaja.AddCara("caraTrasera", caraTraseraMonitor);
+        monitorCaja.AddCara("caraIzquierda", caraIzquierdaMonitor);
+        monitorCaja.AddCara("caraDerecha", caraDerechaMonitor);
+        monitorCaja.AddCara("caraSuperior", caraSuperiorMonitor);
+        monitorCaja.AddCara("caraInferior", caraInferiorMonitor);
 
-        monitor.AddParte(monitorCaja);
+        monitor.AddParte("monitorCaja", monitorCaja);
 
         // Parte: Pantalla azul (frente)
         Parte pantallaAzul = new Parte();
@@ -181,8 +181,8 @@ public static class ObjetoFactory
         caraPantallaAzul.AddVertice(new Vertice(1.8f, 2.3f, 0.25f));
         caraPantallaAzul.AddVertice(new Vertice(-1.8f, 2.3f, 0.25f));
 
-        pantallaAzul.AddCara(caraPantallaAzul);
-        monitor.AddParte(pantallaAzul);
+        pantallaAzul.AddCara("pantalla", caraPantallaAzul);
+        monitor.AddParte("pantallaAzul", pantallaAzul);
 
         return monitor;
     }
@@ -242,14 +242,14 @@ public static class ObjetoFactory
         caraInferior.AddVertice(new Vertice(0.5f, 0.0f, 0.8f));
         caraInferior.AddVertice(new Vertice(-0.5f, 0.0f, 0.8f));
 
-        cuerpoMouse.AddCara(caraFrontal);
-        cuerpoMouse.AddCara(caraTrasera);
-        cuerpoMouse.AddCara(caraIzquierda);
-        cuerpoMouse.AddCara(caraDerecha);
-        cuerpoMouse.AddCara(caraSuperior);
-        cuerpoMouse.AddCara(caraInferior);
+        cuerpoMouse.AddCara("caraFrontal", caraFrontal);
+        cuerpoMouse.AddCara("caraTrasera", caraTrasera);
+        cuerpoMouse.AddCara("caraIzquierda", caraIzquierda);
+        cuerpoMouse.AddCara("caraDerecha", caraDerecha);
+        cuerpoMouse.AddCara("caraSuperior", caraSuperior);
+        cuerpoMouse.AddCara("caraInferior", caraInferior);
 
-        mouse.AddParte(cuerpoMouse);
+        mouse.AddParte("cuerpoMouse", cuerpoMouse);
 
         // Parte: Botón izquierdo
         Parte botonIzquierdo = new Parte();
@@ -261,8 +261,8 @@ public static class ObjetoFactory
         botonIzq.AddVertice(new Vertice(-0.05f, 0.35f, 0.3f));
         botonIzq.AddVertice(new Vertice(-0.35f, 0.35f, 0.3f));
 
-        botonIzquierdo.AddCara(botonIzq);
-        mouse.AddParte(botonIzquierdo);
+        botonIzquierdo.AddCara("boton", botonIzq);
+        mouse.AddParte("botonIzquierdo", botonIzquierdo);
 
         // Parte: Botón derecho
         Parte botonDerecho = new Parte();
@@ -274,8 +274,8 @@ public static class ObjetoFactory
         botonDer.AddVertice(new Vertice(0.35f, 0.35f, 0.3f));
         botonDer.AddVertice(new Vertice(0.05f, 0.35f, 0.3f));
 
-        botonDerecho.AddCara(botonDer);
-        mouse.AddParte(botonDerecho);
+        botonDerecho.AddCara("boton", botonDer);
+        mouse.AddParte("botonDerecho", botonDerecho);
 
         return mouse;
     }
@@ -335,19 +335,20 @@ public static class ObjetoFactory
         caraInferiorBase.AddVertice(new Vertice(2.5f, 0.0f, 1.0f));
         caraInferiorBase.AddVertice(new Vertice(-2.5f, 0.0f, 1.0f));
 
-        baseTeclado.AddCara(caraFrontalTeclado);
-        baseTeclado.AddCara(caraTraseraTeclado);
-        baseTeclado.AddCara(caraIzquierdaTeclado);
-        baseTeclado.AddCara(caraDerechaTeclado);
-        baseTeclado.AddCara(caraSuperiorBase);
-        baseTeclado.AddCara(caraInferiorBase);
+        baseTeclado.AddCara("caraFrontal", caraFrontalTeclado);
+        baseTeclado.AddCara("caraTrasera", caraTraseraTeclado);
+        baseTeclado.AddCara("caraIzquierda", caraIzquierdaTeclado);
+        baseTeclado.AddCara("caraDerecha", caraDerechaTeclado);
+        baseTeclado.AddCara("caraSuperior", caraSuperiorBase);
+        baseTeclado.AddCara("caraInferior", caraInferiorBase);
 
-        teclado.AddParte(baseTeclado);
+        teclado.AddParte("baseTeclado", baseTeclado);
 
         // Parte: Teclas (BLANCO)
         Parte teclas = new Parte();
 
         // Crear teclas en una cuadrícula
+        int teclaId = 0;
         for (int i = -5; i <= 5; i++)
         {
             for (int j = -2; j <= 2; j++)
@@ -362,11 +363,12 @@ public static class ObjetoFactory
                 tecla.AddVertice(new Vertice(x + 0.15f, 0.25f, z + 0.1f));
                 tecla.AddVertice(new Vertice(x - 0.15f, 0.25f, z + 0.1f));
 
-                teclas.AddCara(tecla);
+                teclas.AddCara($"tecla_{teclaId}", tecla);
+                teclaId++;
             }
         }
 
-        teclado.AddParte(teclas);
+        teclado.AddParte("teclas", teclas);
         return teclado;
     }
 
@@ -425,14 +427,14 @@ public static class ObjetoFactory
         caraInferior.AddVertice(new Vertice(0.8f, -2.0f, 1.0f));
         caraInferior.AddVertice(new Vertice(-0.8f, -2.0f, 1.0f));
 
-        carcasa.AddCara(caraFrontal);
-        carcasa.AddCara(caraTrasera);
-        carcasa.AddCara(caraIzquierda);
-        carcasa.AddCara(caraDerecha);
-        carcasa.AddCara(caraSuperior);
-        carcasa.AddCara(caraInferior);
+        carcasa.AddCara("caraFrontal", caraFrontal);
+        carcasa.AddCara("caraTrasera", caraTrasera);
+        carcasa.AddCara("caraIzquierda", caraIzquierda);
+        carcasa.AddCara("caraDerecha", caraDerecha);
+        carcasa.AddCara("caraSuperior", caraSuperior);
+        carcasa.AddCara("caraInferior", caraInferior);
 
-        pc.AddParte(carcasa);
+        pc.AddParte("carcasa", carcasa);
 
         // Parte: Botón de encendido (VERDE)
         Parte botonEncendido = new Parte();
@@ -444,13 +446,14 @@ public static class ObjetoFactory
         boton.AddVertice(new Vertice(0.7f, 1.6f, 1.05f));
         boton.AddVertice(new Vertice(0.5f, 1.6f, 1.05f));
 
-        botonEncendido.AddCara(boton);
-        pc.AddParte(botonEncendido);
+        botonEncendido.AddCara("boton", boton);
+        pc.AddParte("botonEncendido", botonEncendido);
 
         // Parte: Rejillas de ventilación (AMARILLO)
         Parte rejillas = new Parte();
 
         // Crear rejillas horizontales
+        int rejillaId = 0;
         for (int i = -3; i <= 3; i++)
         {
             float y = i * 0.3f;
@@ -462,10 +465,11 @@ public static class ObjetoFactory
             rejilla.AddVertice(new Vertice(0.6f, y + 0.05f, 1.05f));
             rejilla.AddVertice(new Vertice(-0.6f, y + 0.05f, 1.05f));
 
-            rejillas.AddCara(rejilla);
+            rejillas.AddCara($"rejilla_{rejillaId}", rejilla);
+            rejillaId++;
         }
 
-        pc.AddParte(rejillas);
+        pc.AddParte("rejillas", rejillas);
         return pc;
     }
 }

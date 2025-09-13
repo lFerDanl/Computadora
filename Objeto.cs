@@ -1,4 +1,4 @@
-﻿// Objeto.cs - MEJORADO
+﻿// Objeto.cs
 using System;
 using System.Collections.Generic;
 using OpenTK;
@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 [Serializable]
 public class Objeto
 {
-    public List<Parte> partes { get; set; } = new List<Parte>();
+    public Dictionary<string, Parte> partes { get; set; } = new Dictionary<string, Parte>();
 
     public float[] centroDeMasa { get; set; } = new float[3];
 
@@ -21,18 +21,47 @@ public class Objeto
     public Objeto(Vector3 centroMasa)
     {
         this.centroMasa = centroMasa;
-        partes = new List<Parte>();
+        partes = new Dictionary<string, Parte>();
     }
 
-    public void AddParte(Parte parte)
+    public void AddParte(string id, Parte parte)
     {
-        partes.Add(parte);
+        partes[id] = parte;
+    }
+
+    public Parte? GetParte(string id)
+    {
+        return partes.ContainsKey(id) ? partes[id] : null;
+    }
+
+    public void Trasladar(Vector3 traslacion)
+    {
+        foreach (var parte in partes.Values)
+        {
+            parte.Trasladar(traslacion);
+        }
+    }
+
+    public void Rotar(Vector3 rotacion)
+    {
+        foreach (var parte in partes.Values)
+        {
+            parte.Rotar(rotacion);
+        }
+    }
+
+    public void Escalar(Vector3 escala)
+    {
+        foreach (var parte in partes.Values)
+        {
+            parte.Escalar(escala);
+        }
     }
     //obtener partes con dictionary
 
     public virtual void Render()
     {
-        foreach (var parte in partes)
+        foreach (var parte in partes.Values)
         {
             parte.Render(this.centroMasa);
         }

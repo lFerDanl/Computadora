@@ -17,6 +17,11 @@ public class Game : GameWindow
     // Lista de objetos en la escena
     private List<Objeto> objetos;
 
+    // Objeto seleccionado para transformaciones (para testing)
+    private Objeto testeo;
+    //private Parte testeo;
+    //private Cara testeo;
+
     public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
     {
         // Inicializar cámara
@@ -48,6 +53,28 @@ public class Game : GameWindow
     private void InitializeScene()
     {
         objetos = Serializador.CargarEscena("mi_escritorio");
+
+        // Seleccionar el primer objeto para testing (si existe)
+        testeo = objetos[0];
+        //testeo = objetos[0].GetParte("monitorCaja");
+        //testeo = objetos[0].GetParte("monitorCaja").GetCara("caraFrontal");
+        Console.WriteLine($"Objeto seleccionado para transformaciones: {testeo.GetType().Name}");
+        Console.WriteLine("=== CONTROLES DE TRANSFORMACIÓN ===");
+        Console.WriteLine("Traslación:");
+        Console.WriteLine("  1/2: Trasladar en X (-/+)");
+        Console.WriteLine("  3/4: Trasladar en Y (-/+)");
+        Console.WriteLine("  5/6: Trasladar en Z (-/+)");
+        Console.WriteLine("Rotación:");
+        Console.WriteLine("  7/8: Rotar en X (-/+)");
+        Console.WriteLine("  9/0: Rotar en Y (-/+)");
+        Console.WriteLine("  U/I: Rotar en Z (-/+)");
+        Console.WriteLine("Escalado:");
+        Console.WriteLine("  O/P: Escalar uniformemente (-/+)");
+        Console.WriteLine("  J/K: Escalar en X (-/+)");
+        Console.WriteLine("  N/M: Escalar en Y (-/+)");
+        Console.WriteLine("  B/V: Escalar en Z (-/+)");
+        Console.WriteLine("  T: Reset transformaciones");
+        Console.WriteLine("===================================");
 
     }
 
@@ -87,6 +114,7 @@ public class Game : GameWindow
         float moveSpeed = 0.2f;
         float rotationSpeed = 2.0f;
 
+        // === CONTROLES DE CÁMARA ===
         // Rotación con Q y E
         if (keyboard[Key.Q])
             cameraYaw -= rotationSpeed;
@@ -113,6 +141,63 @@ public class Game : GameWindow
             cameraPosition += cameraUp * moveSpeed;
         if (keyboard[Key.LControl] || keyboard[Key.RControl])
             cameraPosition -= cameraUp * moveSpeed;
+
+        // === CONTROLES DE TRANSFORMACIÓN ===
+        if (testeo != null)
+        {
+            float transformStep = 0.1f;
+            float rotationStep = 5.0f;
+            float scaleStep = 0.05f;
+
+            // TRASLACIÓN
+            if (keyboard[Key.Number1])
+                testeo.Trasladar(new Vector3(-transformStep, 0, 0));
+            if (keyboard[Key.Number2])
+                testeo.Trasladar(new Vector3(transformStep, 0, 0));
+            if (keyboard[Key.Number3])
+                testeo.Trasladar(new Vector3(0, -transformStep, 0));
+            if (keyboard[Key.Number4])
+                testeo.Trasladar(new Vector3(0, transformStep, 0));
+            if (keyboard[Key.Number5])
+                testeo.Trasladar(new Vector3(0, 0, -transformStep));
+            if (keyboard[Key.Number6])
+                testeo.Trasladar(new Vector3(0, 0, transformStep));
+
+            // ROTACIÓN
+            if (keyboard[Key.Number7])
+                testeo.Rotar(new Vector3(-rotationStep, 0, 0));
+            if (keyboard[Key.Number8])
+                testeo.Rotar(new Vector3(rotationStep, 0, 0));
+            if (keyboard[Key.Number9])
+                testeo.Rotar(new Vector3(0, -rotationStep, 0));
+            if (keyboard[Key.Number0])
+                testeo.Rotar(new Vector3(0, rotationStep, 0));
+            if (keyboard[Key.U])
+                testeo.Rotar(new Vector3(0, 0, -rotationStep));
+            if (keyboard[Key.I])
+                testeo.Rotar(new Vector3(0, 0, rotationStep));
+
+            // ESCALADO
+            // Escalado uniforme
+            if (keyboard[Key.O])
+                testeo.Escalar(new Vector3(1.0f - scaleStep, 1.0f - scaleStep, 1.0f - scaleStep));
+            if (keyboard[Key.P])
+                testeo.Escalar(new Vector3(1.0f + scaleStep, 1.0f + scaleStep, 1.0f + scaleStep));
+
+            // Escalado por eje
+            if (keyboard[Key.J])
+                testeo.Escalar(new Vector3(1.0f - scaleStep, 1.0f, 1.0f));
+            if (keyboard[Key.K])
+                testeo.Escalar(new Vector3(1.0f + scaleStep, 1.0f, 1.0f));
+            if (keyboard[Key.N])
+                testeo.Escalar(new Vector3(1.0f, 1.0f - scaleStep, 1.0f));
+            if (keyboard[Key.M])
+                testeo.Escalar(new Vector3(1.0f, 1.0f + scaleStep, 1.0f));
+            if (keyboard[Key.B])
+                testeo.Escalar(new Vector3(1.0f, 1.0f, 1.0f - scaleStep));
+            if (keyboard[Key.V])
+                testeo.Escalar(new Vector3(1.0f, 1.0f, 1.0f + scaleStep));
+        }
     }
 
     protected override void OnResize(EventArgs e)
@@ -144,5 +229,14 @@ public class Game : GameWindow
             cameraFront = new Vector3(0.0f, 0.0f, -1.0f);
             cameraYaw = -90.0f;
         }
+
+        // Reset de transformaciones del objeto
+        if (e.Key == Key.T && testeo != null)
+        {
+            // Recargar la escena para resetear las transformaciones
+            InitializeScene();
+            Console.WriteLine("Transformaciones reseteadas.");
+        }
+
     }
 }

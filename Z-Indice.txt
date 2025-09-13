@@ -1,0 +1,24 @@
+Índice de IDs de Partes por Objeto
+MONITOR [0]
+
+"soporteVertical"
+"baseMonitor"
+"monitorCaja"
+"pantallaAzul"
+
+MOUSE [1]
+
+"cuerpoMouse"
+"botonIzquierdo"
+"botonDerecho"
+
+TECLADO [2]
+
+"baseTeclado"
+"teclas"
+
+PC [3]
+
+"carcasa"
+"botonEncendido"
+"rejillas"
