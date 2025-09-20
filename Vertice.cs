@@ -23,5 +23,6 @@ public class Vertice : ITransformable
     public void Rotar(Vector3 rotacion) { }
     public void Escalar(Vector3 escala) { }
     public void Reflejar(Vector3 escala) { }
+    public Vector3 GetCentro() { return Position; }
 
 }

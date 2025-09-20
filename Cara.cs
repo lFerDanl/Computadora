@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Newtonsoft.Json;
+using System.Security.Cryptography.Xml;
 
 [Serializable]
 public class Cara: ElementoGeometrico<Vertice>
@@ -21,6 +22,10 @@ public class Cara: ElementoGeometrico<Vertice>
     [JsonIgnore]
     private Matrix4 matrizTransformacion = Matrix4.Identity;
 
+    public Cara(Vector3 centro) : base(centro)
+    {
+        ActualizarMatriz();
+    }
 
     public override void Trasladar(Vector3 t)
     {
@@ -62,6 +67,7 @@ public class Cara: ElementoGeometrico<Vertice>
     {
         GL.PushMatrix();
 
+        //Vector3 centroGlobal = Vector3.TransformPosition(centroMasa, matrizTransformacion);
         // Aplicar centro de masa del objeto
         GL.Translate(centroMasa.X, centroMasa.Y, centroMasa.Z);
 

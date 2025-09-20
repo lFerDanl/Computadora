@@ -6,7 +6,7 @@ public static class ObjetoFactory
 {
     public static Escenario CrearEscenarioEscritorio()
     {
-        var escenario = new Escenario();
+        var escenario = new Escenario(Vector3.Zero); // Agregar constructor con parámetro
 
         // Crear objetos 
         var monitor = CrearMonitor();
@@ -28,10 +28,10 @@ public static class ObjetoFactory
         Objeto monitor = new Objeto(new Vector3(0, 0, 0));
 
         // Parte: Soporte vertical (GRIS OSCURO)
-        Parte soporteVertical = new Parte();
+        Parte soporteVertical = new Parte(Vector3.Zero); // Agregar constructor con parámetro
 
         // Cara frontal del soporte
-        Cara caraFrontalSoporte = new Cara();
+        Cara caraFrontalSoporte = new Cara(Vector3.Zero); // Agregar constructor con parámetro
         caraFrontalSoporte.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraFrontalSoporte.AddHijo("v1", new Vertice(-0.1f, -1.9f, 0.1f));
         caraFrontalSoporte.AddHijo("v2", new Vertice(0.1f, -1.9f, 0.1f));
@@ -39,7 +39,7 @@ public static class ObjetoFactory
         caraFrontalSoporte.AddHijo("v4", new Vertice(-0.1f, 0.1f, 0.1f));
 
         // Cara trasera del soporte
-        Cara caraTraseraSoporte = new Cara();
+        Cara caraTraseraSoporte = new Cara(Vector3.Zero);
         caraTraseraSoporte.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraTraseraSoporte.AddHijo("v1", new Vertice(-0.1f, -1.9f, -0.1f));
         caraTraseraSoporte.AddHijo("v2", new Vertice(-0.1f, 0.1f, -0.1f));
@@ -47,7 +47,7 @@ public static class ObjetoFactory
         caraTraseraSoporte.AddHijo("v4", new Vertice(0.1f, -1.9f, -0.1f));
 
         // Cara izquierda del soporte
-        Cara caraIzquierdaSoporte = new Cara();
+        Cara caraIzquierdaSoporte = new Cara(Vector3.Zero);
         caraIzquierdaSoporte.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraIzquierdaSoporte.AddHijo("v1", new Vertice(-0.1f, -1.9f, -0.1f));
         caraIzquierdaSoporte.AddHijo("v2", new Vertice(-0.1f, -1.9f, 0.1f));
@@ -55,7 +55,7 @@ public static class ObjetoFactory
         caraIzquierdaSoporte.AddHijo("v4", new Vertice(-0.1f, 0.1f, -0.1f));
 
         // Cara derecha del soporte
-        Cara caraDerechaSoporte = new Cara();
+        Cara caraDerechaSoporte = new Cara(Vector3.Zero);
         caraDerechaSoporte.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraDerechaSoporte.AddHijo("v1", new Vertice(0.1f, -1.9f, -0.1f));
         caraDerechaSoporte.AddHijo("v2", new Vertice(0.1f, 0.1f, -0.1f));
@@ -70,10 +70,10 @@ public static class ObjetoFactory
         monitor.AddHijo("soporteVertical", soporteVertical);
 
         // Parte: Base del monitor (GRIS OSCURO)
-        Parte baseMonitor = new Parte();
+        Parte baseMonitor = new Parte(Vector3.Zero);
 
         // Cara frontal de la base
-        Cara caraFrontalBase = new Cara();
+        Cara caraFrontalBase = new Cara(Vector3.Zero);
         caraFrontalBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraFrontalBase.AddHijo("v1", new Vertice(-0.8f, -2.3f, 0.8f));
         caraFrontalBase.AddHijo("v2", new Vertice(0.8f, -2.3f, 0.8f));
@@ -81,7 +81,7 @@ public static class ObjetoFactory
         caraFrontalBase.AddHijo("v4", new Vertice(-0.8f, -1.7f, 0.8f));
 
         // Cara trasera de la base
-        Cara caraTraseraBase = new Cara();
+        Cara caraTraseraBase = new Cara(Vector3.Zero);
         caraTraseraBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraTraseraBase.AddHijo("v1", new Vertice(-0.8f, -2.3f, -0.8f));
         caraTraseraBase.AddHijo("v2", new Vertice(-0.8f, -1.7f, -0.8f));
@@ -89,7 +89,7 @@ public static class ObjetoFactory
         caraTraseraBase.AddHijo("v4", new Vertice(0.8f, -2.3f, -0.8f));
 
         // Cara izquierda de la base
-        Cara caraIzquierdaBase = new Cara();
+        Cara caraIzquierdaBase = new Cara(Vector3.Zero);
         caraIzquierdaBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraIzquierdaBase.AddHijo("v1", new Vertice(-0.8f, -2.3f, -0.8f));
         caraIzquierdaBase.AddHijo("v2", new Vertice(-0.8f, -2.3f, 0.8f));
@@ -97,7 +97,7 @@ public static class ObjetoFactory
         caraIzquierdaBase.AddHijo("v4", new Vertice(-0.8f, -1.7f, -0.8f));
 
         // Cara derecha de la base
-        Cara caraDerechaBase = new Cara();
+        Cara caraDerechaBase = new Cara(Vector3.Zero);
         caraDerechaBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraDerechaBase.AddHijo("v1", new Vertice(0.8f, -2.3f, -0.8f));
         caraDerechaBase.AddHijo("v2", new Vertice(0.8f, -1.7f, -0.8f));
@@ -105,7 +105,7 @@ public static class ObjetoFactory
         caraDerechaBase.AddHijo("v4", new Vertice(0.8f, -2.3f, 0.8f));
 
         // Cara superior de la base
-        Cara caraSuperiorBase = new Cara();
+        Cara caraSuperiorBase = new Cara(Vector3.Zero);
         caraSuperiorBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraSuperiorBase.AddHijo("v1", new Vertice(-0.8f, -1.7f, -0.8f));
         caraSuperiorBase.AddHijo("v2", new Vertice(-0.8f, -1.7f, 0.8f));
@@ -113,7 +113,7 @@ public static class ObjetoFactory
         caraSuperiorBase.AddHijo("v4", new Vertice(0.8f, -1.7f, -0.8f));
 
         // Cara inferior de la base
-        Cara caraInferiorBase = new Cara();
+        Cara caraInferiorBase = new Cara(Vector3.Zero);
         caraInferiorBase.Color = new float[] { 0.3f, 0.3f, 0.3f };
         caraInferiorBase.AddHijo("v1", new Vertice(-0.8f, -2.3f, -0.8f));
         caraInferiorBase.AddHijo("v2", new Vertice(0.8f, -2.3f, -0.8f));
@@ -130,10 +130,10 @@ public static class ObjetoFactory
         monitor.AddHijo("baseMonitor", baseMonitor);
 
         // Parte: Monitor caja (NEGRO)
-        Parte monitorCaja = new Parte();
+        Parte monitorCaja = new Parte(Vector3.Zero);
 
         // Cara frontal de la pantalla
-        Cara caraFrontalMonitor = new Cara();
+        Cara caraFrontalMonitor = new Cara(Vector3.Zero);
         caraFrontalMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraFrontalMonitor.AddHijo("v1", new Vertice(-2.0f, -0.5f, 0.2f));
         caraFrontalMonitor.AddHijo("v2", new Vertice(2.0f, -0.5f, 0.2f));
@@ -141,7 +141,7 @@ public static class ObjetoFactory
         caraFrontalMonitor.AddHijo("v4", new Vertice(-2.0f, 2.5f, 0.2f));
 
         // Cara trasera de la pantalla
-        Cara caraTraseraMonitor = new Cara();
+        Cara caraTraseraMonitor = new Cara(Vector3.Zero);
         caraTraseraMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraTraseraMonitor.AddHijo("v1", new Vertice(-2.0f, -0.5f, -0.2f));
         caraTraseraMonitor.AddHijo("v2", new Vertice(-2.0f, 2.5f, -0.2f));
@@ -149,7 +149,7 @@ public static class ObjetoFactory
         caraTraseraMonitor.AddHijo("v4", new Vertice(2.0f, -0.5f, -0.2f));
 
         // Cara izquierda de la pantalla
-        Cara caraIzquierdaMonitor = new Cara();
+        Cara caraIzquierdaMonitor = new Cara(Vector3.Zero);
         caraIzquierdaMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraIzquierdaMonitor.AddHijo("v1", new Vertice(-2.0f, -0.5f, -0.2f));
         caraIzquierdaMonitor.AddHijo("v2", new Vertice(-2.0f, -0.5f, 0.2f));
@@ -157,7 +157,7 @@ public static class ObjetoFactory
         caraIzquierdaMonitor.AddHijo("v4", new Vertice(-2.0f, 2.5f, -0.2f));
 
         // Cara derecha de la pantalla
-        Cara caraDerechaMonitor = new Cara();
+        Cara caraDerechaMonitor = new Cara(Vector3.Zero);
         caraDerechaMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraDerechaMonitor.AddHijo("v1", new Vertice(2.0f, -0.5f, -0.2f));
         caraDerechaMonitor.AddHijo("v2", new Vertice(2.0f, 2.5f, -0.2f));
@@ -165,7 +165,7 @@ public static class ObjetoFactory
         caraDerechaMonitor.AddHijo("v4", new Vertice(2.0f, -0.5f, 0.2f));
 
         // Cara superior de la pantalla
-        Cara caraSuperiorMonitor = new Cara();
+        Cara caraSuperiorMonitor = new Cara(Vector3.Zero);
         caraSuperiorMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraSuperiorMonitor.AddHijo("v1", new Vertice(-2.0f, 2.5f, -0.2f));
         caraSuperiorMonitor.AddHijo("v2", new Vertice(-2.0f, 2.5f, 0.2f));
@@ -173,7 +173,7 @@ public static class ObjetoFactory
         caraSuperiorMonitor.AddHijo("v4", new Vertice(2.0f, 2.5f, -0.2f));
 
         // Cara inferior de la pantalla
-        Cara caraInferiorMonitor = new Cara();
+        Cara caraInferiorMonitor = new Cara(Vector3.Zero);
         caraInferiorMonitor.Color = new float[] { 0.1f, 0.1f, 0.1f };
         caraInferiorMonitor.AddHijo("v1", new Vertice(-2.0f, -0.5f, -0.2f));
         caraInferiorMonitor.AddHijo("v2", new Vertice(2.0f, -0.5f, -0.2f));
@@ -190,10 +190,10 @@ public static class ObjetoFactory
         monitor.AddHijo("monitorCaja", monitorCaja);
 
         // Parte: Pantalla azul (frente)
-        Parte pantallaAzul = new Parte();
+        Parte pantallaAzul = new Parte(Vector3.Zero);
 
         // Solo la cara frontal azul
-        Cara caraPantallaAzul = new Cara();
+        Cara caraPantallaAzul = new Cara(Vector3.Zero);
         caraPantallaAzul.Color = new float[] { 0.0f, 0.5f, 1.0f };
         caraPantallaAzul.AddHijo("v1", new Vertice(-1.8f, -0.3f, 0.25f));
         caraPantallaAzul.AddHijo("v2", new Vertice(1.8f, -0.3f, 0.25f));
@@ -211,10 +211,10 @@ public static class ObjetoFactory
         Objeto mouse = new Objeto(new Vector3(3, -2.5f, 2));
 
         // Parte: Cuerpo del mouse (GRIS)
-        Parte cuerpoMouse = new Parte();
+        Parte cuerpoMouse = new Parte(Vector3.Zero);
 
         // Cara frontal
-        Cara caraFrontal = new Cara();
+        Cara caraFrontal = new Cara(Vector3.Zero);
         caraFrontal.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraFrontal.AddHijo("v1", new Vertice(-0.5f, 0.0f, 0.8f));
         caraFrontal.AddHijo("v2", new Vertice(0.5f, 0.0f, 0.8f));
@@ -222,7 +222,7 @@ public static class ObjetoFactory
         caraFrontal.AddHijo("v4", new Vertice(-0.5f, 0.3f, 0.8f));
 
         // Cara trasera
-        Cara caraTrasera = new Cara();
+        Cara caraTrasera = new Cara(Vector3.Zero);
         caraTrasera.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraTrasera.AddHijo("v1", new Vertice(-0.5f, 0.0f, -0.8f));
         caraTrasera.AddHijo("v2", new Vertice(-0.5f, 0.3f, -0.8f));
@@ -230,7 +230,7 @@ public static class ObjetoFactory
         caraTrasera.AddHijo("v4", new Vertice(0.5f, 0.0f, -0.8f));
 
         // Cara izquierda
-        Cara caraIzquierda = new Cara();
+        Cara caraIzquierda = new Cara(Vector3.Zero);
         caraIzquierda.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraIzquierda.AddHijo("v1", new Vertice(-0.5f, 0.0f, -0.8f));
         caraIzquierda.AddHijo("v2", new Vertice(-0.5f, 0.0f, 0.8f));
@@ -238,7 +238,7 @@ public static class ObjetoFactory
         caraIzquierda.AddHijo("v4", new Vertice(-0.5f, 0.3f, -0.8f));
 
         // Cara derecha
-        Cara caraDerecha = new Cara();
+        Cara caraDerecha = new Cara(Vector3.Zero);
         caraDerecha.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraDerecha.AddHijo("v1", new Vertice(0.5f, 0.0f, -0.8f));
         caraDerecha.AddHijo("v2", new Vertice(0.5f, 0.3f, -0.8f));
@@ -246,7 +246,7 @@ public static class ObjetoFactory
         caraDerecha.AddHijo("v4", new Vertice(0.5f, 0.0f, 0.8f));
 
         // Cara superior
-        Cara caraSuperior = new Cara();
+        Cara caraSuperior = new Cara(Vector3.Zero);
         caraSuperior.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraSuperior.AddHijo("v1", new Vertice(-0.5f, 0.3f, -0.8f));
         caraSuperior.AddHijo("v2", new Vertice(-0.5f, 0.3f, 0.8f));
@@ -254,7 +254,7 @@ public static class ObjetoFactory
         caraSuperior.AddHijo("v4", new Vertice(0.5f, 0.3f, -0.8f));
 
         // Cara inferior
-        Cara caraInferior = new Cara();
+        Cara caraInferior = new Cara(Vector3.Zero);
         caraInferior.Color = new float[] { 0.5f, 0.5f, 0.5f };
         caraInferior.AddHijo("v1", new Vertice(-0.5f, 0.0f, -0.8f));
         caraInferior.AddHijo("v2", new Vertice(0.5f, 0.0f, -0.8f));
@@ -271,9 +271,9 @@ public static class ObjetoFactory
         mouse.AddHijo("cuerpoMouse", cuerpoMouse);
 
         // Parte: Botón izquierdo
-        Parte botonIzquierdo = new Parte();
+        Parte botonIzquierdo = new Parte(Vector3.Zero);
 
-        Cara botonIzq = new Cara();
+        Cara botonIzq = new Cara(Vector3.Zero);
         botonIzq.Color = new float[] { 0.3f, 0.3f, 0.3f };
         botonIzq.AddHijo("v1", new Vertice(-0.35f, 0.35f, -0.3f));
         botonIzq.AddHijo("v2", new Vertice(-0.05f, 0.35f, -0.3f));
@@ -284,9 +284,9 @@ public static class ObjetoFactory
         mouse.AddHijo("botonIzquierdo", botonIzquierdo);
 
         // Parte: Botón derecho
-        Parte botonDerecho = new Parte();
+        Parte botonDerecho = new Parte(Vector3.Zero);
 
-        Cara botonDer = new Cara();
+        Cara botonDer = new Cara(Vector3.Zero);
         botonDer.Color = new float[] { 0.3f, 0.3f, 0.3f };
         botonDer.AddHijo("v1", new Vertice(0.05f, 0.35f, -0.3f));
         botonDer.AddHijo("v2", new Vertice(0.35f, 0.35f, -0.3f));
@@ -304,10 +304,10 @@ public static class ObjetoFactory
         Objeto teclado = new Objeto(new Vector3(0, -2.3f, 3));
 
         // Parte: Base del teclado (NEGRO)
-        Parte baseTeclado = new Parte();
+        Parte baseTeclado = new Parte(Vector3.Zero);
 
         // Cara frontal de la base
-        Cara caraFrontalTeclado = new Cara();
+        Cara caraFrontalTeclado = new Cara(Vector3.Zero);
         caraFrontalTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
         caraFrontalTeclado.AddHijo("v1", new Vertice(-2.5f, 0.0f, 1.0f));
         caraFrontalTeclado.AddHijo("v2", new Vertice(2.5f, 0.0f, 1.0f));
@@ -315,7 +315,7 @@ public static class ObjetoFactory
         caraFrontalTeclado.AddHijo("v4", new Vertice(-2.5f, 0.2f, 1.0f));
 
         // Cara trasera de la base
-        Cara caraTraseraTeclado = new Cara();
+        Cara caraTraseraTeclado = new Cara(Vector3.Zero);
         caraTraseraTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
         caraTraseraTeclado.AddHijo("v1", new Vertice(-2.5f, 0.0f, -1.0f));
         caraTraseraTeclado.AddHijo("v2", new Vertice(-2.5f, 0.2f, -1.0f));
@@ -323,7 +323,7 @@ public static class ObjetoFactory
         caraTraseraTeclado.AddHijo("v4", new Vertice(2.5f, 0.0f, -1.0f));
 
         // Cara izquierda de la base
-        Cara caraIzquierdaTeclado = new Cara();
+        Cara caraIzquierdaTeclado = new Cara(Vector3.Zero);
         caraIzquierdaTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
         caraIzquierdaTeclado.AddHijo("v1", new Vertice(-2.5f, 0.0f, -1.0f));
         caraIzquierdaTeclado.AddHijo("v2", new Vertice(-2.5f, 0.0f, 1.0f));
@@ -331,7 +331,7 @@ public static class ObjetoFactory
         caraIzquierdaTeclado.AddHijo("v4", new Vertice(-2.5f, 0.2f, -1.0f));
 
         // Cara derecha de la base
-        Cara caraDerechaTeclado = new Cara();
+        Cara caraDerechaTeclado = new Cara(Vector3.Zero);
         caraDerechaTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
         caraDerechaTeclado.AddHijo("v1", new Vertice(2.5f, 0.0f, -1.0f));
         caraDerechaTeclado.AddHijo("v2", new Vertice(2.5f, 0.2f, -1.0f));
@@ -339,32 +339,32 @@ public static class ObjetoFactory
         caraDerechaTeclado.AddHijo("v4", new Vertice(2.5f, 0.0f, 1.0f));
 
         // Cara superior de la base
-        Cara caraSuperiorBase = new Cara();
-        caraSuperiorBase.Color = new float[] { 0.2f, 0.2f, 0.2f };
-        caraSuperiorBase.AddHijo("v1", new Vertice(-2.5f, 0.2f, -1.0f));
-        caraSuperiorBase.AddHijo("v2", new Vertice(-2.5f, 0.2f, 1.0f));
-        caraSuperiorBase.AddHijo("v3", new Vertice(2.5f, 0.2f, 1.0f));
-        caraSuperiorBase.AddHijo("v4", new Vertice(2.5f, 0.2f, -1.0f));
+        Cara caraSuperiorTeclado = new Cara(Vector3.Zero);
+        caraSuperiorTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
+        caraSuperiorTeclado.AddHijo("v1", new Vertice(-2.5f, 0.2f, -1.0f));
+        caraSuperiorTeclado.AddHijo("v2", new Vertice(-2.5f, 0.2f, 1.0f));
+        caraSuperiorTeclado.AddHijo("v3", new Vertice(2.5f, 0.2f, 1.0f));
+        caraSuperiorTeclado.AddHijo("v4", new Vertice(2.5f, 0.2f, -1.0f));
 
         // Cara inferior de la base
-        Cara caraInferiorBase = new Cara();
-        caraInferiorBase.Color = new float[] { 0.2f, 0.2f, 0.2f };
-        caraInferiorBase.AddHijo("v1", new Vertice(-2.5f, 0.0f, -1.0f));
-        caraInferiorBase.AddHijo("v2", new Vertice(2.5f, 0.0f, -1.0f));
-        caraInferiorBase.AddHijo("v3", new Vertice(2.5f, 0.0f, 1.0f));
-        caraInferiorBase.AddHijo("v4", new Vertice(-2.5f, 0.0f, 1.0f));
+        Cara caraInferiorTeclado = new Cara(Vector3.Zero);
+        caraInferiorTeclado.Color = new float[] { 0.2f, 0.2f, 0.2f };
+        caraInferiorTeclado.AddHijo("v1", new Vertice(-2.5f, 0.0f, -1.0f));
+        caraInferiorTeclado.AddHijo("v2", new Vertice(2.5f, 0.0f, -1.0f));
+        caraInferiorTeclado.AddHijo("v3", new Vertice(2.5f, 0.0f, 1.0f));
+        caraInferiorTeclado.AddHijo("v4", new Vertice(-2.5f, 0.0f, 1.0f));
 
         baseTeclado.AddHijo("caraFrontal", caraFrontalTeclado);
         baseTeclado.AddHijo("caraTrasera", caraTraseraTeclado);
         baseTeclado.AddHijo("caraIzquierda", caraIzquierdaTeclado);
         baseTeclado.AddHijo("caraDerecha", caraDerechaTeclado);
-        baseTeclado.AddHijo("caraSuperior", caraSuperiorBase);
-        baseTeclado.AddHijo("caraInferior", caraInferiorBase);
+        baseTeclado.AddHijo("caraSuperior", caraSuperiorTeclado);
+        baseTeclado.AddHijo("caraInferior", caraInferiorTeclado);
 
         teclado.AddHijo("baseTeclado", baseTeclado);
 
         // Parte: Teclas (BLANCO)
-        Parte teclas = new Parte();
+        Parte teclas = new Parte(Vector3.Zero);
 
         // Crear teclas en una cuadrícula
         int teclaId = 0;
@@ -375,7 +375,7 @@ public static class ObjetoFactory
                 float x = i * 0.4f;
                 float z = j * 0.3f;
 
-                Cara tecla = new Cara();
+                Cara tecla = new Cara(Vector3.Zero);
                 tecla.Color = new float[] { 1.0f, 1.0f, 1.0f };
                 tecla.AddHijo("v1", new Vertice(x - 0.15f, 0.25f, z - 0.1f));
                 tecla.AddHijo("v2", new Vertice(x + 0.15f, 0.25f, z - 0.1f));
@@ -396,10 +396,10 @@ public static class ObjetoFactory
         Objeto pc = new Objeto(new Vector3(-4, -1, 0));
 
         // Parte: Carcasa principal (GRIS OSCURO)
-        Parte carcasa = new Parte();
+        Parte carcasa = new Parte(Vector3.Zero);
 
         // Cara frontal
-        Cara caraFrontal = new Cara();
+        Cara caraFrontal = new Cara(Vector3.Zero);
         caraFrontal.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraFrontal.AddHijo("v1", new Vertice(-0.8f, -2.0f, 1.0f));
         caraFrontal.AddHijo("v2", new Vertice(0.8f, -2.0f, 1.0f));
@@ -407,7 +407,7 @@ public static class ObjetoFactory
         caraFrontal.AddHijo("v4", new Vertice(-0.8f, 2.0f, 1.0f));
 
         // Cara trasera
-        Cara caraTrasera = new Cara();
+        Cara caraTrasera = new Cara(Vector3.Zero);
         caraTrasera.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraTrasera.AddHijo("v1", new Vertice(-0.8f, -2.0f, -1.0f));
         caraTrasera.AddHijo("v2", new Vertice(-0.8f, 2.0f, -1.0f));
@@ -415,7 +415,7 @@ public static class ObjetoFactory
         caraTrasera.AddHijo("v4", new Vertice(0.8f, -2.0f, -1.0f));
 
         // Cara izquierda
-        Cara caraIzquierda = new Cara();
+        Cara caraIzquierda = new Cara(Vector3.Zero);
         caraIzquierda.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraIzquierda.AddHijo("v1", new Vertice(-0.8f, -2.0f, -1.0f));
         caraIzquierda.AddHijo("v2", new Vertice(-0.8f, -2.0f, 1.0f));
@@ -423,7 +423,7 @@ public static class ObjetoFactory
         caraIzquierda.AddHijo("v4", new Vertice(-0.8f, 2.0f, -1.0f));
 
         // Cara derecha
-        Cara caraDerecha = new Cara();
+        Cara caraDerecha = new Cara(Vector3.Zero);
         caraDerecha.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraDerecha.AddHijo("v1", new Vertice(0.8f, -2.0f, -1.0f));
         caraDerecha.AddHijo("v2", new Vertice(0.8f, 2.0f, -1.0f));
@@ -431,7 +431,7 @@ public static class ObjetoFactory
         caraDerecha.AddHijo("v4", new Vertice(0.8f, -2.0f, 1.0f));
 
         // Cara superior
-        Cara caraSuperior = new Cara();
+        Cara caraSuperior = new Cara(Vector3.Zero);
         caraSuperior.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraSuperior.AddHijo("v1", new Vertice(-0.8f, 2.0f, -1.0f));
         caraSuperior.AddHijo("v2", new Vertice(-0.8f, 2.0f, 1.0f));
@@ -439,7 +439,7 @@ public static class ObjetoFactory
         caraSuperior.AddHijo("v4", new Vertice(0.8f, 2.0f, -1.0f));
 
         // Cara inferior
-        Cara caraInferior = new Cara();
+        Cara caraInferior = new Cara(Vector3.Zero);
         caraInferior.Color = new float[] { 0.25f, 0.25f, 0.25f };
         caraInferior.AddHijo("v1", new Vertice(-0.8f, -2.0f, -1.0f));
         caraInferior.AddHijo("v2", new Vertice(0.8f, -2.0f, -1.0f));
@@ -456,9 +456,9 @@ public static class ObjetoFactory
         pc.AddHijo("carcasa", carcasa);
 
         // Parte: Botón de encendido (VERDE)
-        Parte botonEncendido = new Parte();
+        Parte botonEncendido = new Parte(Vector3.Zero);
 
-        Cara boton = new Cara();
+        Cara boton = new Cara(Vector3.Zero);
         boton.Color = new float[] { 0.0f, 1.0f, 0.0f };
         boton.AddHijo("v1", new Vertice(0.5f, 1.4f, 1.05f));
         boton.AddHijo("v2", new Vertice(0.7f, 1.4f, 1.05f));
@@ -469,7 +469,7 @@ public static class ObjetoFactory
         pc.AddHijo("botonEncendido", botonEncendido);
 
         // Parte: Rejillas de ventilación (AMARILLO)
-        Parte rejillas = new Parte();
+        Parte rejillas = new Parte(Vector3.Zero);
 
         // Crear rejillas horizontales
         int rejillaId = 0;
@@ -477,7 +477,7 @@ public static class ObjetoFactory
         {
             float y = i * 0.3f;
 
-            Cara rejilla = new Cara();
+            Cara rejilla = new Cara(Vector3.Zero);
             rejilla.Color = new float[] { 1.0f, 1.0f, 0.0f };
             rejilla.AddHijo("v1", new Vertice(-0.6f, y - 0.05f, 1.05f));
             rejilla.AddHijo("v2", new Vertice(0.6f, y - 0.05f, 1.05f));

@@ -6,4 +6,5 @@ public interface ITransformable
     void Rotar(Vector3 rotacion);
     void Escalar(Vector3 escala);
     void Reflejar(Vector3 reflejar);
+    Vector3 GetCentro();
 }

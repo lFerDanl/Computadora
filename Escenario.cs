@@ -6,11 +6,11 @@ using OpenTK;
 public class Escenario : ElementoGeometrico<Objeto>
 {
 
-    public Escenario() : base() { }
+    public Escenario(Vector3 centro) : base(centro) { }
 
     public void Render()
     {
-        foreach (var objeto in Hijos.Values)
-            objeto.Render();
+        foreach (var obj in Hijos.Values)
+            obj.Render(centroMasa); // pasa centro del escenario
     }
 }
