@@ -6,9 +6,8 @@ using OpenTK.Graphics.OpenGL;
 using Newtonsoft.Json;
 
 [Serializable]
-public class Cara
+public class Cara: ElementoGeometrico<Vertice>
 {
-    public List<Vertice> Vertices { get; set; } = new List<Vertice>();
     public float[] Color { get; set; } = new float[] { 1f, 1f, 1f };
 
     [JsonIgnore]
@@ -17,34 +16,46 @@ public class Cara
     public Vector3 rotacion { get; set; } = Vector3.Zero;
     [JsonIgnore]
     public Vector3 escala { get; set; } = Vector3.One;
+    [JsonIgnore]
+    public Vector3 reflejar { get; set; } = Vector3.One;
+    [JsonIgnore]
+    private Matrix4 matrizTransformacion = Matrix4.Identity;
 
-    public Cara()
+
+    public override void Trasladar(Vector3 t)
     {
-        Vertices = new List<Vertice>();
+        traslacion += t;
+        ActualizarMatriz();
     }
 
-    public void AddVertice(Vertice vertice)
+    public override void Rotar(Vector3 r)
     {
-        Vertices.Add(vertice);
+        rotacion += r;
+        ActualizarMatriz();
     }
 
-    public void Trasladar(Vector3 traslacion)
+    public override void Escalar(Vector3 s)
     {
-        this.traslacion += traslacion;
+        escala *= s; // Vector3 tiene operador * sobrecargado
+        ActualizarMatriz();
     }
 
-    public void Rotar(Vector3 rotacion)
+    public override void Reflejar(Vector3 r)
     {
-        this.rotacion += rotacion;
+        reflejar *= r;
+        ActualizarMatriz();
     }
 
-    public void Escalar(Vector3 escala)
+    private void ActualizarMatriz()
     {
-        this.escala = new Vector3(
-            this.escala.X * escala.X,
-            this.escala.Y * escala.Y,
-            this.escala.Z * escala.Z
-        );
+        // Crear la matriz de transformación completa
+        matrizTransformacion =
+            Matrix4.CreateScale(reflejar) *
+            Matrix4.CreateTranslation(traslacion) *
+            (Matrix4.CreateRotationX(MathHelper.DegreesToRadians(rotacion.X)) *
+             Matrix4.CreateRotationY(MathHelper.DegreesToRadians(rotacion.Y)) *
+             Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(rotacion.Z))) *
+            Matrix4.CreateScale(escala);
     }
 
     public void Render(Vector3 centroMasa)
@@ -54,19 +65,15 @@ public class Cara
         // Aplicar centro de masa del objeto
         GL.Translate(centroMasa.X, centroMasa.Y, centroMasa.Z);
 
-        // Aplicar transformaciones de la cara
-        GL.Translate(traslacion.X, traslacion.Y, traslacion.Z);
-        GL.Rotate(rotacion.X, 1.0f, 0.0f, 0.0f);
-        GL.Rotate(rotacion.Y, 0.0f, 1.0f, 0.0f);
-        GL.Rotate(rotacion.Z, 0.0f, 0.0f, 1.0f);
-        GL.Scale(escala.X, escala.Y, escala.Z);
+        // Aplicar Transformacionesa
+        GL.MultMatrix(ref matrizTransformacion);
 
         // Renderizar la cara
         GL.Color3(Color[0], Color[1], Color[2]);
         GL.Begin(PrimitiveType.Quads);
-        foreach (var vertice in Vertices)
+        foreach (var vertice in Hijos)
         {
-            GL.Vertex3(vertice.Position);
+            GL.Vertex3(vertice.Value.Position);
         }
         GL.End();
 

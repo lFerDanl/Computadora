@@ -5,7 +5,7 @@ using Vector3 = OpenTK.Vector3;
 using Newtonsoft.Json;
 
 [Serializable]
-public class Vertice
+public class Vertice : ITransformable
 {
     public float[] coordenadas { get; set; } = new float[3];
 
@@ -18,5 +18,10 @@ public class Vertice
     {
         coordenadas[0] = x; coordenadas[1] = y; coordenadas[2] = z;
     }
+
+    public void Trasladar(Vector3 traslacion) { }
+    public void Rotar(Vector3 rotacion) { }
+    public void Escalar(Vector3 escala) { }
+    public void Reflejar(Vector3 escala) { }
 
 }
